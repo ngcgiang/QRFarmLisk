@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useContract } from './hooks/useContract';
 import { useWallet } from './hooks/useWallet';
 import ProductHistory from './components/ProductHistory';
+import RoleActions from './components/RoleActions';
 
 function App() {
   const { walletAddress, isConnected, isLoading, connectWallet, disconnectWallet } = useWallet();
@@ -74,6 +75,15 @@ function App() {
             <p>🔗 Address: {contractAddress}</p>
             <p>👤 Your Role: {getRoleName(userRole)}</p>
           </div>
+        )}
+
+        {/* Role-Based Actions */}
+        {contract && (
+          <RoleActions 
+            contract={contract} 
+            userRole={userRole} 
+            walletAddress={walletAddress} 
+          />
         )}
 
         {/* Product History Component */}
