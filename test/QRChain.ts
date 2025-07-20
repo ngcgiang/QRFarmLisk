@@ -123,7 +123,7 @@ describe("QRChain", function () {
 
       await expect(qrChain.connect(farmer).createProduct(qrCode, initStatus))
         .to.emit(qrChain, "ProductCreated")
-        .withArgs(1, qrCode, farmer.address, initStatus, await ethers.provider.getBlock("latest").then(b => b!.timestamp));
+        .withArgs(1, qrCode, farmer.address, initStatus, await ethers.provider.getBlock("latest").then(b => b!.timestamp+1));
 
       expect(await qrChain.productCounter()).to.equal(1);
       expect(await qrChain.getTotalProducts()).to.equal(1);

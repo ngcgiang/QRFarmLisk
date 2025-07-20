@@ -30,11 +30,9 @@ function RoleActions({ contract, userRole, walletAddress, onRoleUpdate }) {
       const roleNames = ['None', 'Farmer', 'Transporter', 'Retailer'];
       setAssignmentSuccess(`✅ Successfully assigned ${roleNames[roleNumber]} role to your wallet!`);
       
-      // Call parent component to refresh user role
+      // Call parent component to refresh user role immediately
       if (onRoleUpdate) {
-        setTimeout(() => {
-          onRoleUpdate();
-        }, 2000);
+        onRoleUpdate();
       }
       
     } catch (error) {
